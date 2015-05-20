@@ -10,7 +10,9 @@ var gulp = require('gulp'),
 gulp.task('sass', function () {
   gulp.src('./src/scss/*.scss')
     .pipe(plumber({errorHandler: config.errorHandler}))
-    .pipe(scsslint())
+    .pipe(scsslint({
+      'config': 'scss-lint.yml',
+    }))
     .pipe(scsslint.failReporter('E'))
     .pipe(sourcemaps.init())
       .pipe(sass())
