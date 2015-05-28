@@ -5,7 +5,11 @@ gulp.task('watch:scss', function () {
 });
 
 gulp.task('watch:js', function () {
-  gulp.watch("src/js/*.js", ['scripts']);
+  gulp.watch("src/js/**/*.js", ['scripts']);
+});
+
+gulp.task('watch:jsx', function () {
+  gulp.watch("src/js/**/*.jsx", ['jsx', 'scripts']);
 });
 
 gulp.task('watch:jade', function () {
@@ -24,5 +28,5 @@ gulp.task('watch:assets', function () {
   gulp.watch(["src/assets/**/*"], ['assets']);
 });
 
-gulp.task('watch', ['watch:jade', 'watch:js', 'watch:scss', 'watch:vendor:js',
+gulp.task('watch', ['watch:jade', 'watch:jsx', 'watch:js', 'watch:scss', 'watch:vendor:js',
                     'watch:vendor:css', 'watch:assets']);

@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     config = require('../config');
 
 var localConfig = {
-  src: './src/js/**/*.js',
+  src: ['./tmp/**/*.js', './src/js/**/*.js'],
   dest: './build/js/',
   uglify: {
     development: {
@@ -23,7 +23,7 @@ var localConfig = {
 };
 
 gulp.task('scripts', function() {
-  gulp.src(localConfig.src)
+  gulp.src(localConfig.src, { base: './' })
     .pipe(plumber({errorHandler: config.errorHandler}))
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
